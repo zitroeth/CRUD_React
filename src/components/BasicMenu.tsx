@@ -19,7 +19,6 @@ export default function BasicMenu() {
         setAnchorEl(event.currentTarget);
     };
 
-
     let timeoutId: number | null = null;
 
     const handleClose = () => {
@@ -63,7 +62,8 @@ export default function BasicMenu() {
                 }}
             >
                 <Typography variant="h6" component="div" sx={{
-                    textTransform: "capitalize", "& .MuiButton-root:hover": {
+                    textTransform: "capitalize", 
+                    "& .MuiButton-root:hover": {
                         bgcolor: "transparent",
                         color: teal[200]
                     }
@@ -95,7 +95,7 @@ export default function BasicMenu() {
                         opacity: 1,
                         color: teal[400],
                         pr: "4vw",
-                    },
+                    }
                 }}
             >
                 <div style={{ display: "flex", flexDirection: "column" }} >

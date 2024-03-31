@@ -8,7 +8,7 @@ import {default as ReadFriend} from './read/Friend'
 import {default as ReadBelonging} from './read/Belonging'
 import {default as ReadBorrowed} from './read/Borrowed'
 
-function App() {
+export default function App() {
   return (
     <>
       <DenseAppBar/>
@@ -23,5 +23,3 @@ function App() {
     </>
   )
 }
-
-export default App
