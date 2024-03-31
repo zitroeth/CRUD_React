@@ -6,6 +6,9 @@ import { teal } from '@mui/material/colors';
 import { styled } from '@mui/material/styles';
 import Button, { ButtonProps } from '@mui/material/Button';
 import { useForm } from "react-hook-form";
+import { useState } from 'react';
+import Alert from '@mui/material/Alert';
+
 
 const CssTextField = styled(TextField)({
   '& label.Mui-focused': {
@@ -47,6 +50,12 @@ export default function Belonging() {
     }
   })
 
+  const [alertSuccess, setAlertSuccess] = useState(false);
+  const [alertContentSuccess, setAlertContentSuccess] = useState('');
+  const [alertError, setAlertError] = useState(false);
+  const [alertContentError, setAlertContentError] = useState('');
+
+
   const { register, handleSubmit, formState } = form
   const { errors } = formState
 
@@ -59,13 +68,25 @@ export default function Belonging() {
         'Content-type': 'application/json; charset=UTF-8',
       },
     })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        // Handle data
+      .then((response) => {
+        if (response.ok === true) {
+          setAlertContentSuccess(response.statusText);
+          setAlertSuccess(true);
+          setAlertError(false);
+        } else {
+          setAlertContentError(response.statusText);
+          setAlertError(true);
+          setAlertSuccess(false);
+        }
+        console.log(response.statusText);
+        return response.json();
       })
+      // .then((data) => {
+      //   console.log(data);
+      //   // Handle data
+      // })
       .catch((err) => {
-        console.log(err.message);
+        alert(err.message);
       });
   }
 
@@ -101,11 +122,14 @@ export default function Belonging() {
             noValidate
             autoComplete="off"
             onSubmit={handleSubmit(onSubmit)}
+            onChange={() => { setAlertSuccess(false); setAlertError(false); }}
           >
             <CssTextField label="Name" id="name-textfield" type="text" {...register("name", { required: "Name is required", })} error={!!errors.name} helperText={errors.name?.message} />
             <ColorButton variant="contained" type='submit'>Submit</ColorButton>
           </Box>
 
+          {alertError ? <Alert severity='error'>{alertContentError}</Alert> : <></>}
+          {alertSuccess ? <Alert severity='success'>{alertContentSuccess}</Alert> : <></>}
         </Paper>
       </Box>
     </>
