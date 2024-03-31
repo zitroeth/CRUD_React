@@ -1,17 +1,25 @@
 import './App.css'
-import BasicTable from './components/BasicTable'
+import DenseAppBar from './components/DenseAppBar'
+import { Route, Routes} from 'react-router'
+import {default as CreateFriend} from './create/Friend' 
+import {default as CreateBelonging} from './create/Belonging'
+import {default as CreateBorrowed} from './create/Borrowed'
+import {default as ReadFriend} from './read/Friend' 
+import {default as ReadBelonging} from './read/Belonging'
+import {default as ReadBorrowed} from './read/Borrowed'
 
 function App() {
-
   return (
     <>
-      <BasicTable url="http://localhost:3113/api/v1/friends/"/>
-      <br/>
-      <br/>
-      <BasicTable url="http://localhost:3113/api/v1/belongings/"/>
-      <br/>
-      <br/>
-      <BasicTable url="http://localhost:3113/api/v1/borrowings/"/>
+      <DenseAppBar/>
+      <Routes>
+        <Route path="/create/Friend" element={<CreateFriend />}/>
+        <Route path="/create/Belonging" element={<CreateBelonging />}/>
+        <Route path="/create/Borrowed" element={<CreateBorrowed />}/>
+        <Route path="/read/Friend" element={<ReadFriend />}/>
+        <Route path="/read/Belonging" element={<ReadBelonging />}/>
+        <Route path="/read/Borrowed" element={<ReadBorrowed />}/>
+      </Routes>
     </>
   )
 }
