@@ -107,6 +107,7 @@ export default function BasicMenu() {
                     <MenuItem onClick={handleClose} component={Link} href="/create/Friend" >Friend</MenuItem>
                     <MenuItem onClick={handleClose} component={Link} href="/create/Belonging" >Belonging</MenuItem>
                     <MenuItem onClick={handleClose} component={Link} href="/create/Borrowed" >Borrowed</MenuItem>
+                    <MenuItem onClick={handleClose} component={Link} href="/create/SentimentAnalysis" >Sentiment Analysis</MenuItem>
                 </div>
 
                 <div style={{ display: "flex", flexDirection: "column" }}>
@@ -115,6 +116,7 @@ export default function BasicMenu() {
                     <MenuItem onClick={handleClose} component={Link} href="/read/Friend" >Friend</MenuItem>
                     <MenuItem onClick={handleClose} component={Link} href="/read/Belonging" >Belonging</MenuItem>
                     <MenuItem onClick={handleClose} component={Link} href="/read/Borrowed" >Borrowed</MenuItem>
+                    <MenuItem onClick={handleClose} component={Link} href="/read/SentimentAnalysis" >Sentiment Analysis</MenuItem>
                 </div>
 
             </Menu>

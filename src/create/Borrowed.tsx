@@ -170,7 +170,7 @@ export default function Borrowed() {
                   label="What"
                   color='primary'
                   {...register("what", { required: "Belonging is required", })}
-                  onChange={() => { handleBelongingChange; setAlertSuccess(false); setAlertError(false); }}
+                  onChange={handleBelongingChange}  //() => { handleBelongingChange; setAlertSuccess(false); setAlertError(false);
                   error={!!errors.what}
                 >
                   {belongingData.map((belonging) => (
