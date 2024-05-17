@@ -99,10 +99,7 @@ export default function BasicMenu() {
                 }}
             >
                 <div style={{ display: "flex", flexDirection: "column" }} >
-                    <MenuItem disabled={true}>
-                        <AddIcon />
-                        Create
-                    </MenuItem>
+                    <MenuItem disabled={true}><AddIcon />Create</MenuItem>
                     <Divider />
                     <MenuItem onClick={handleClose} component={Link} href="/create/Friend" >Friend</MenuItem>
                     <MenuItem onClick={handleClose} component={Link} href="/create/Belonging" >Belonging</MenuItem>

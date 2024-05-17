@@ -6,6 +6,7 @@ import HomeIcon from '@mui/icons-material/Home';
 import Tooltip from '@mui/material/Tooltip';
 import BasicMenu from './BasicMenu';
 import { grey, teal } from '@mui/material/colors';
+import Typography from '@mui/material/Typography';
 
 
 export default function DenseAppBar() {
@@ -46,6 +47,50 @@ export default function DenseAppBar() {
           >
             <BasicMenu />
           </IconButton>
+
+          <Tooltip title="Register">
+            <IconButton edge="start" color="inherit" aria-label="register" href="/register"
+              sx={{
+                mr: 3,
+                "&.MuiButtonBase-root:hover": {
+                  bgcolor: "transparent",
+                  color: teal[200]
+                }
+              }}
+            >
+              <Typography variant="h6" component="div" sx={{
+                    textTransform: "capitalize", 
+                    "& .MuiButton-root:hover": {
+                        bgcolor: "transparent",
+                        color: teal[200]
+                    }
+                }}>
+                    Register
+                </Typography>
+            </IconButton>
+          </Tooltip>
+
+          <Tooltip title="Login">
+            <IconButton edge="start" color="inherit" aria-label="register" href="/login"
+              sx={{
+                mr: 3,
+                "&.MuiButtonBase-root:hover": {
+                  bgcolor: "transparent",
+                  color: teal[200]
+                }
+              }}
+            >
+              <Typography variant="h6" component="div" sx={{
+                    textTransform: "capitalize", 
+                    "& .MuiButton-root:hover": {
+                        bgcolor: "transparent",
+                        color: teal[200]
+                    }
+                }}>
+                    Login
+                </Typography>
+            </IconButton>
+          </Tooltip>
 
         </Toolbar>
       </AppBar>

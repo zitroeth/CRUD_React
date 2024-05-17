@@ -150,10 +150,10 @@ export default function SentimentAnalysis() {
             <Alert severity="success">{alertContentSuccess}</Alert>
           )}
           {alertSuccess ? (
-            <>
+            <Box sx={{ display: "flex", justifyContent: "space-between" }}>
               <SentimentDisplay label={sentimentLabel} score={sentimentScore} />
               <GaugeChart label={sentimentLabel} score={sentimentScore} />
-            </>
+            </Box>
           ) : null}
         </Paper>
       </Box>
