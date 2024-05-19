@@ -88,10 +88,13 @@ export default function Login() {
             })
             .then((data) => {
                 const token = data.access;
-            
+                const username = data.username;
+                localStorage.setItem('username', username);
                 localStorage.setItem('access_token', token);
-            
-                console.log(token); // Optional: log the token to verify it's stored
+                window.location.href = '/home';
+                // console.log(token); // Optional: log the token to verify it's stored
+                // console.log(username);
+                // console.log(data);
             })
             .catch((err) => {
                 alert(err.message);

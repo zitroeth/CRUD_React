@@ -13,6 +13,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import Register from './user/Register'
 import Login from './user/Login'
+import UserList from './read/UserList'
 
 export default function App() {
   return (
@@ -28,6 +29,7 @@ export default function App() {
           <Route path="/read/Belonging" element={<ReadBelonging />} />
           <Route path="/read/Borrowed" element={<ReadBorrowed />} />
           <Route path="/read/SentimentAnalysis" element={<ReadSentimentAnalysis />} />
+          <Route path="/read/UserList" element={<UserList />} />
           <Route path="/register/" element={<Register />} />
           <Route path="/login/" element={<Login />} />
         </Routes>

@@ -114,6 +114,8 @@ export default function BasicMenu() {
                     <MenuItem onClick={handleClose} component={Link} href="/read/Belonging" >Belonging</MenuItem>
                     <MenuItem onClick={handleClose} component={Link} href="/read/Borrowed" >Borrowed</MenuItem>
                     <MenuItem onClick={handleClose} component={Link} href="/read/SentimentAnalysis" >Sentiment Analysis</MenuItem>
+                    <MenuItem onClick={handleClose} component={Link} href="/read/UserList/" >User List</MenuItem>
+                    
                 </div>
 
             </Menu>
