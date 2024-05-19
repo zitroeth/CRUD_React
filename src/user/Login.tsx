@@ -61,6 +61,45 @@ export default function Login() {
     const { register, handleSubmit, formState } = form
     const { errors } = formState
 
+    // const onSubmit = (data: FormValues) => {
+    //     // Using Fetch API
+    //     fetch('http://localhost:3113/api/token/login/', {
+    //         method: 'POST',
+    //         body: JSON.stringify(data),
+    //         headers: {
+    //             'Content-type': 'application/json; charset=UTF-8',
+    //         },
+    //     })
+    //         .then((response) => {
+    //             if (response.ok === true) {
+    //                 setAlertContentSuccess(response.statusText);
+    //                 setAlertSuccess(true);
+    //                 setAlertError(false);
+
+    //                 const data = response.json();
+    //                 return data;
+    //             } else {
+    //                 setAlertContentError(response.statusText);
+    //                 setAlertError(true);
+    //                 setAlertSuccess(false);
+    //             }
+    //             console.log(response.statusText);
+    //             return response.json();
+    //         })
+    //         .then((data) => {
+    //             const token = data.token;
+    //             const username = data.username;
+    //             localStorage.setItem('username', username);
+    //             localStorage.setItem('access_token', token);
+    //             // window.location.href = '/';
+    //             // console.log(token); // Optional: log the token to verify it's stored
+    //             // console.log(username);
+    //             // console.log(data);
+    //         })
+    //         .catch((err) => {
+    //             alert(err.message);
+    //         });
+    // }
     const onSubmit = (data: FormValues) => {
         // Using Fetch API
         fetch('http://localhost:3113/api/token/login/', {
@@ -70,36 +109,35 @@ export default function Login() {
                 'Content-type': 'application/json; charset=UTF-8',
             },
         })
-            .then((response) => {
+           .then((response) => {
                 if (response.ok === true) {
                     setAlertContentSuccess(response.statusText);
                     setAlertSuccess(true);
                     setAlertError(false);
-
-                    const data = response.json();
-                    return data;
+                    return response.json(); // Return the parsed JSON to continue processing
                 } else {
                     setAlertContentError(response.statusText);
                     setAlertError(true);
                     setAlertSuccess(false);
+                    throw new Error(response.statusText); // Throw an error to handle in the catch block
                 }
                 console.log(response.statusText);
-                return response.json();
             })
-            .then((data) => {
-                const token = data.access;
+           .then((data) => {
+                const token = data.token;
                 const username = data.username;
                 localStorage.setItem('username', username);
                 localStorage.setItem('access_token', token);
-                window.location.href = '/home';
+                // Optionally redirect or log the token to verify it's stored
+                window.location.href = '/';
                 // console.log(token); // Optional: log the token to verify it's stored
                 // console.log(username);
                 // console.log(data);
             })
-            .catch((err) => {
+           .catch((err) => {
                 alert(err.message);
             });
-    }
+    };
 
     return (
         <>

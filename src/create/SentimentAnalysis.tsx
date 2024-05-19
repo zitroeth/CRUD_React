@@ -64,6 +64,8 @@ export default function SentimentAnalysis() {
 
   const onSubmit = async (data: FormValues) => {
     try {
+      const token = localStorage.getItem('access_token');
+      console.log(token);
       const response = await fetch(
         "http://localhost:3113/api/v1/SentimentAnalysis/",
         {
@@ -71,6 +73,7 @@ export default function SentimentAnalysis() {
           body: JSON.stringify(data),
           headers: {
             "Content-type": "application/json; charset=UTF-8",
+            "Authorization": `Token ${token}`,
           },
         }
       );
