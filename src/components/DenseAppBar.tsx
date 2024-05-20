@@ -14,19 +14,26 @@ export default function DenseAppBar() {
   const [username, setUsername] = useState("");
 
   const handleLogout = () => {
-    
     localStorage.removeItem('access_token');
     localStorage.removeItem('username');
-
-    
     window.location.href = '/';
 };
 
   useEffect(() => {
+    // const storedUsername = localStorage.getItem("username");
+    // if (storedUsername) {
+    //   setUsername(storedUsername);
+    //   setIsLoggedIn(true);
+    // }
     const storedUsername = localStorage.getItem("username");
-    if (storedUsername) {
+    const storedAccessToken = localStorage.getItem("access_token");
+
+    if (storedUsername && storedAccessToken) {
       setUsername(storedUsername);
       setIsLoggedIn(true);
+    } else {
+      setUsername("");
+      setIsLoggedIn(false);
     }
   }, []);
 

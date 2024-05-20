@@ -12,9 +12,10 @@ import Button from '@mui/material/Button';
 interface Props {
   url: string;
   token: string | null;
+  editurl: string | null;
 }
 
-export default function BasicTable({ url, token }: Props) {
+export default function BasicTable({ url, token, editurl }: Props) {
   const [data, setData] = useState([]);
 
   axios.defaults.headers.common['Authorization'] = `Token ${token}`;
@@ -30,9 +31,9 @@ export default function BasicTable({ url, token }: Props) {
       });
   }, [url]);
 
-  const handleEdit = (rowData) => {
-    console.log("Editing:", rowData);
-    // Implement API call to edit the row
+  const handleEdit = async (id: number) => {
+    console.log("Editing:", id);
+    window.location.href = `${editurl}${id}/`;
   };
 
   const handleDelete = async (id: number) => {
@@ -55,13 +56,20 @@ export default function BasicTable({ url, token }: Props) {
         throw new Error(response.statusText);
       } else {
         alert('Success!');
-        window.location.href = '/read/SentimentAnalysis';
+        if (url === "http://localhost:3113/users/") {
+          localStorage.removeItem('access_token');
+          localStorage.removeItem('username');
+          window.location.href = '/login';
+        }else if (url === "http://localhost:3113/api/v1/SentimentAnalysis/"){
+          window.location.href = '/read/SentimentAnalysis';
+        }
       }
 
     } catch (err: any) {
       alert(err.message);
     }
   }
+
   return (
     <>
       <TableContainer component={Paper}>
@@ -72,6 +80,7 @@ export default function BasicTable({ url, token }: Props) {
                 Object.keys(data[0]).map((key, index) => (
                   <TableCell align="left">{key}</TableCell>
                 ))}
+              <TableCell align="left">Edit</TableCell>
               <TableCell align="left">Delete</TableCell>
             </TableRow>
           </TableHead>
@@ -82,7 +91,10 @@ export default function BasicTable({ url, token }: Props) {
                   <TableCell align="left">{value}</TableCell>
                 ))}
                 <TableCell>
-                  <Button variant="contained" color="secondary" onClick={() => handleDelete(Object.values(row)[0])}>Delete</Button>
+                  <Button variant="contained" color="success" onClick={() => handleEdit(Object.values(row)[0])}>Edit</Button>
+                </TableCell>
+                <TableCell>
+                  <Button variant="contained" color="error" onClick={() => handleDelete(Object.values(row)[0])}>Delete</Button>
                 </TableCell>
               </TableRow>
             ))}

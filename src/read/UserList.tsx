@@ -5,7 +5,7 @@ export default function UserList() {
   return (
     <>
       <p>User List</p>
-      <BasicTable url="http://localhost:3113/users/" token={token} />
+      <BasicTable url="http://localhost:3113/users/" token={token} editurl="http://localhost:5173/update/users/"/>
     </>
   )
 }

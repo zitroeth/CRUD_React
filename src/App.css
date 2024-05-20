@@ -38,8 +38,9 @@
 }
 
 .read-the-docs {
-  color: #888;
+  color: #888;#e0f2f1
 } */
 body {
-  background-color:  #e0f2f1;
+  background: rgb(51,51,51);
+  background: linear-gradient(90deg, rgba(51,51,51,1) 0%, rgba(28,28,28,1) 50%, rgba(30,30,30,1) 100%);
 }

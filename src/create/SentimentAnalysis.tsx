@@ -154,8 +154,16 @@ export default function SentimentAnalysis() {
           )}
           {alertSuccess ? (
             <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-              <SentimentDisplay label={sentimentLabel} score={sentimentScore} />
               <GaugeChart label={sentimentLabel} score={sentimentScore} />
+              <Typography
+                variant="h6"
+                component="div"
+                marginY={"2.5vh"}
+                textAlign={"left"}
+              >
+                <SentimentDisplay label={sentimentLabel} score={sentimentScore}></SentimentDisplay>
+                The sentiment for this game review is {sentimentLabel}!
+              </Typography>
             </Box>
           ) : null}
         </Paper>
